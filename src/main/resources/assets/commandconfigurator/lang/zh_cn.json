@@ -1,0 +1,4 @@
+{
+  "config.commandlimit": "是否启用命令限制功能",
+  "config.disabledcommands": "命令名单(例如：[/msg, /give])"
+}

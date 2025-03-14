@@ -1,0 +1,4 @@
+{
+  "config.commandlimit": "enable or disable command limit",
+  "config.disabledcommands": "List of commands to disable (e.g. [/msg, /give])"
+}
