@@ -8,19 +8,20 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-import qwaecd.commandconfigurator.config.CommonConfig;
+
+import static qwaecd.commandconfigurator.config.CommonConfig.SPEC;
 
 @Mod(CommandConfigurator.MODID)
 public class CommandConfigurator
 {
     public static final String MODID = "commandconfigurator";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public CommandConfigurator(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, SPEC);
     }
 
 //    @SubscribeEvent
