@@ -29,13 +29,18 @@ public class Disabler {
             Player player = source.getPlayer();
             if(player == null) return;
             if(player.hasPermissions(4) && CommonConfig.getOpLimit()) return;
+            String playerName = player.getName().getString();
+            //玩家在白名单内结束判断
+            if(CommonConfig.whiteListPlayerName.get().contains(playerName)) return;
 
             String command = event.getParseResults().getReader().getString();
             if(command.startsWith("/")) command = command.substring(1);
             String[] cmdTree = command.split(" ");
 
             if(CommonConfig.isCommandBlocked(cmdTree)){
-                player.sendSystemMessage(Component.literal("该命令已被禁用"));
+                player.sendSystemMessage(Component.translatable(
+                        "commandconfigurator.blocked_command"
+                        ));
                 event.setCanceled(true);
             }
 

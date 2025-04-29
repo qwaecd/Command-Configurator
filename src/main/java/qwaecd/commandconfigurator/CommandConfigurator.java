@@ -3,7 +3,6 @@ package qwaecd.commandconfigurator;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -21,7 +20,7 @@ public class CommandConfigurator
     {
         IEventBus modEventBus = context.getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, SPEC);
+        context.registerConfig(ModConfig.Type.COMMON, SPEC);
     }
 
 //    @SubscribeEvent
