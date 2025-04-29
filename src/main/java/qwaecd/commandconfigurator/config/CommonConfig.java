@@ -12,6 +12,7 @@ public class CommonConfig {
     private static ForgeConfigSpec.BooleanValue opLimit;
     private static Map<String, List<String>> DISABLED_COMMAND_TREE;
     private static ForgeConfigSpec.ConfigValue<List<? extends String>> DISABLED_COMMANDS;
+    public static ForgeConfigSpec.ConfigValue<List< ? extends String>> whiteListPlayerName;
 
 
     static {
@@ -35,6 +36,11 @@ public class CommonConfig {
                     .defineListAllowEmpty("disabledCommands",
                             List.of(),
                             obj -> obj instanceof String);
+            whiteListPlayerName = builder
+                    .comment("This is a whitelist, used to store whitelist player names.")
+                    .comment("这是一个白名单列表，用于存储白名单玩家名称。")
+                    .comment("e.g. [\"qwaecd\"]")
+                    .defineList("whiteListPlayerName", Collections.emptyList(),entry -> entry instanceof String);
         builder.pop();
     }
 
@@ -47,7 +53,7 @@ public class CommonConfig {
     }
 
     public static void disabledCommandTreeBuild() {
-        CommandConfigurator.LOGGER.debug("disabledCommandTreeBuild 被调用！");
+//        CommandConfigurator.LOGGER.debug("disabledCommandTreeBuild 被调用！");
         DISABLED_COMMAND_TREE = new HashMap<>();
         getDisabledCommands().forEach(cmd -> {
             String[] parts = cmd.toLowerCase().split("\\.");
